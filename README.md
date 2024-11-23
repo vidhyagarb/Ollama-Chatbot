@@ -7,8 +7,10 @@ step 2:
     '''command line
     git clone https://github.com/vidhyagarb/Ollama-Chatbot.git
     '''
+
 step 3: 
     open the project in your IDE
+
 step 4:
     configure git with user name and email ID
 
@@ -17,8 +19,12 @@ step 4:
     '''
     '''command line
     git config user.email <email ID>
+
 step 5:
     '''command line
     git push
     '''
-    
+step 6: 
+    '''conda create -n <env name> python==3.11 -y'''
+step 7:
+Activate env 
