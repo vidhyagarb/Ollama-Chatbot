@@ -9,3 +9,16 @@ step 2:
     '''
 step 3: 
     open the project in your IDE
+step 4:
+    configure git with user name and email ID
+
+    '''command line
+    git config user.name <username>
+    '''
+    '''command line
+    git config user.email <email ID>
+step 5:
+    '''command line
+    git push
+    '''
+    
