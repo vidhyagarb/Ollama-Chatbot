@@ -47,6 +47,10 @@ class GetResponse(BaseModel):
     question: str
     context: str
 
+class RatingRequest(BaseModel):
+    response: str
+    rating: int
+
 @app.post("/save_information")
 async def save_information(request_prams:Information):
     return {
@@ -90,6 +94,25 @@ async def get_response(request_prams: GetResponse):
             print(str(e))
     else:
         raise HTTPException(status_code=response.status_code, detail="Failed to generate response")
+    
+@app.post("/insert_rating")
+async def get_response(request_prams: RatingRequest):
+    try:
+        conn = sqlite3.connect('llm_responses.db')
+        cursor = conn.cursor()
+        cursor.execute("""
+            UPDATE responses
+            SET rating = ?
+            where answer= ?
+        """,(request_prams.rating, request_prams.response)
+                        )
+        
+        conn.commit()
+        conn.close()
+        return {"data": "rating stored successfully"}
+
+    except Exception as e:
+        print(str(e))
 
 if __name__ == "__main__":
     import uvicorn
